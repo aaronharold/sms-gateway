@@ -1,0 +1,18 @@
+{
+    "name": "aaronharold/sms-gateway",
+    "description": "This is a laravel library for SMS provider (M360)",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Aaronharold\\SmsGateway\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "aaronharold",
+            "email": "harold.aaron@kmc.solutions"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
