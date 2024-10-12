@@ -13,7 +13,7 @@ return [
     | object initialization.
     |
     */
-    'default' => env('SMS_CONNECTION', 'promotexter'),
+    'default' => env('SMS_CONNECTION', null),
     /*
     |--------------------------------------------------------------------------
     | Connections
