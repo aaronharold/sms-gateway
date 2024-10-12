@@ -6,21 +6,21 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit5ff64aebdec912f0fdf259790b1544e8
 {
-    public static $prefixLengthsPsr4 = array (
-        'A' => 
-        array (
+    public static $prefixLengthsPsr4 = array(
+        'A' =>
+        array(
             'Aaronharold\\SmsGateway\\' => 23,
         ),
     );
 
-    public static $prefixDirsPsr4 = array (
-        'Aaronharold\\SmsGateway\\' => 
-        array (
+    public static $prefixDirsPsr4 = array(
+        'Aaronharold\\SmsGateway\\' =>
+        array(
             0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
-    public static $classMap = array (
+    public static $classMap = array(
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
@@ -30,7 +30,6 @@ class ComposerStaticInit5ff64aebdec912f0fdf259790b1544e8
             $loader->prefixLengthsPsr4 = ComposerStaticInit5ff64aebdec912f0fdf259790b1544e8::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit5ff64aebdec912f0fdf259790b1544e8::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit5ff64aebdec912f0fdf259790b1544e8::$classMap;
-
         }, null, ClassLoader::class);
     }
 }
