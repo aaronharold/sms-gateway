@@ -9,14 +9,14 @@ class SmsGatewayProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../config/smsgateway.php' => config_path('smsgateway.php'),
+            __DIR__ . '/config/smsgateway.php' => config_path('smsgateway.php'),
         ], 'smsgateway-config');
     }
 
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/sms.php',
+            __DIR__ . '/config/smsgateway.php',
             'smsgateway'
         );
     }

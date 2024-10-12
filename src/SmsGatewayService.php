@@ -2,7 +2,6 @@
 
 namespace Aaronharold\SmsGateway;
 
-use Illuminate\Support\Facades\Http;
 use Aaronharold\SmsGateway\Contracts\Connection;
 use Aaronharold\SmsGateway\Exceptions\ConfigNotFoundException;
 use Aaronharold\SmsGateway\Exceptions\InvalidConnectionNameException;
@@ -10,6 +9,19 @@ use Aaronharold\SmsGateway\Exceptions\InvalidConfigurationTypeException;
 
 class SmsGatewayService implements Connection
 {
+    /**
+     * SMS Configuration
+     */
+    public array $headers = [
+        'Accept' => 'application/json'
+    ];
+
+    public array $body = [];
+    /**
+     * SMS Config Available Connection Name eg: m360 || promotexter
+     */
+    public string $connection;
+
     public function getConnectionName(): string
     {
         if (!$this->connection) {
@@ -40,19 +52,7 @@ class SmsGatewayService implements Connection
         }
 
         $this->body($conn);
-    }
-
-    public function initializeConnection(array $config = null): self
-    {
-        $this->getConnectionDetails();
-
-        // Initialize the Http instance without making a request
-        $this->http = Http::withHeaders($this->headers);
-
-        // Store the body for later use
-        $this->body = $config !== null ? $config : $this->body;
-
-        return $this;
+        return $this->body;
     }
 
     public function onConnection(string $name = 'default'): self
@@ -60,7 +60,7 @@ class SmsGatewayService implements Connection
         $conn = config('smsgateway.connection');
 
         if (strtolower($name) == 'default') {
-            $conn = config('smsgateway.default');
+            $name = config('smsgateway.default');
         }
 
         if ($conn === null) {
@@ -72,6 +72,8 @@ class SmsGatewayService implements Connection
         }
 
         $this->connection = $name;
+        $this->body = [];
+        $this->getConnectionDetails();
         return $this;
     }
 
